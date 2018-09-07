@@ -1,0 +1,58 @@
+package Chapter8;
+
+import java.util.Scanner;
+
+public class ProductApp {
+
+  
+    
+public static void main (String args[]){
+    
+    // display a welcome message
+    
+    System.out.println("Welcome to the Product Viewer");
+    System.out.println();
+    
+    // perform 1 or more selections
+    
+    Scanner sc = new Scanner(System.in);
+    
+    String choice = "y";
+    
+    while(choice.equalsIgnoreCase("y")){
+        
+        System.out.print("Enter Product Code:  ");
+        
+        String productCode = sc.nextLine(); // read the product code
+        
+        // get the Product Object
+        
+        Product p = ProductDB.getProduct(productCode);
+        
+        // display the output
+        
+        System.out.println();
+        
+        if(p != null){
+            
+            System.out.println("Description: " + p.toString());
+            System.out.println("Price: " + p.getPriceFormatted());
+            }
+        else{
+            System.out.println("No product matches this product code");
+            
+        }
+        System.out.println();
+        System.out.println("Product Count: " + Product.getCount() + "\n");
+        
+        
+        // see if the user wants to continue
+        
+        System.out.println("Continue? (y/n): " );
+        choice  = sc.nextLine();
+        System.out.println();
+    }
+    
+}
+    
+}
